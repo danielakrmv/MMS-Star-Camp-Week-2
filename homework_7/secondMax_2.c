@@ -16,8 +16,17 @@ int main(){
         scanf("%d", &arr[i]);
     }
 
+    if(secondMax(arr, size, &sm)){
+        printf("Second max is: %d\n", sm);
+    }
 
-    printf("Second max is: %d\n", secondMax(arr, size, &sm));
+    if(size == 0){
+        fprintf(stderr, "Array has zero elements!\n");
+    }else if(size == 1){
+        fprintf(stderr, "Array has only one elements!");
+    }else if(secondMax(arr, size, &sm) == -1){
+        fprintf(stderr, "First max el is equal with the second one!\n");
+    }
     
     return 0;
 }
@@ -25,14 +34,6 @@ int main(){
 int secondMax(const int* arr, size_t n, int* secondMax){
     int firstmax = *arr; //zadavam purviqt max el da e purviq el v masiva
     *secondMax = *(arr + 1); //vtoriqt max da e vtoriq element v masiva
-
-    if(n == 0){
-        fprintf(stderr, "Array has zero elements!\n"); //masivut da nqma elementi
-        return -1;
-    }else if(n == 1){
-        fprintf(stderr, "Array has only 1 element!\n");
-        return *arr;
-    }
 
     for(int i=1; i < n; i++){
         if(*(arr + i) > firstmax){
@@ -43,7 +44,7 @@ int secondMax(const int* arr, size_t n, int* secondMax){
         }
     }
     if(firstmax == *secondMax){
-        fprintf(stderr, "First max el is equal with second\n");
+        return -1;
     }
     return *secondMax;
 }
