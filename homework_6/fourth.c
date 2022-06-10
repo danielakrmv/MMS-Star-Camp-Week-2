@@ -23,7 +23,7 @@ unsigned bitsNCount(unsigned count, unsigned bitscnt, ...)
     for(int i = 0; i < count; i++)
     {
         int currentMask = va_arg(argl, int);
-        int bits = countBits(currentMask);
+        int bits = chekBits(currentMask);
         if(bits == bitscnt)
         {
             countMasks++;
